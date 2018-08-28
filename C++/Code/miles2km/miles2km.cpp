@@ -28,8 +28,12 @@ void converter(double &num, string &unit){
         num /= 1.609;
         unit = "miles ";
     }
-    if(unit == "miles"){
+    else if(unit == "miles"){
         num *= 1.609;
         unit = "km ";
+    }
+    else{
+        num = 0;
+        unit = "invalid input";
     }
 }
