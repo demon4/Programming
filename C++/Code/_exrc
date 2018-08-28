@@ -1,0 +1,69 @@
+if &cp | set nocp | endif
+map  :NERDTreeToggle
+map  :TemplateInit
+vmap  "-d
+imap ÎÔ *
+let s:cpo_save=&cpo
+set cpo&vim
+map! Îu <C-End>
+map! Îw <C-Home>
+map Q gq
+vmap [% [%m'gv``
+nmap \j <Plug>(CommandTJump)
+nmap \b <Plug>(CommandTBuffer)
+nmap \t <Plug>(CommandT)
+vmap ]% ]%m'gv``
+vmap a% [%v]%
+vmap gx <Plug>NetrwBrowseXVis
+nmap gx <Plug>NetrwBrowseX
+vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
+nnoremap <silent> <Plug>(CommandTTag) :CommandTTag
+nnoremap <silent> <Plug>(CommandTSearch) :CommandTSearch
+nnoremap <silent> <Plug>(CommandTMRU) :CommandTMRU
+nnoremap <silent> <Plug>(CommandTLine) :CommandTLine
+nnoremap <silent> <Plug>(CommandTCommand) :CommandTCommand
+nnoremap <silent> <Plug>(CommandTJump) :CommandTJump
+nnoremap <silent> <Plug>(CommandTHistory) :CommandTHistory
+nnoremap <silent> <Plug>(CommandTHelp) :CommandTHelp
+nnoremap <silent> <Plug>(CommandTBuffer) :CommandTBuffer
+nnoremap <silent> <Plug>(CommandT) :CommandT
+map <C-F5> :! "%:r".exe 
+map <F5> :!cpp "%:r" 
+inoremap  u
+vmap ÎØ "*d
+vmap Î× "*d
+vmap ÎÕ "*y
+vmap ÎÔ "-d"*P
+nmap ÎÔ "*P
+nmap Îu <C-End>
+vmap Îu <C-End>
+nmap Îw <C-Home>
+vmap Îw <C-Home>
+let &cpo=s:cpo_save
+unlet s:cpo_save
+set autoindent
+set backspace=indent,eol,start
+set backup
+set diffexpr=MyDiff()
+set display=truncate
+set expandtab
+set helplang=En
+set history=200
+set hlsearch
+set incsearch
+set langnoremap
+set nolangremap
+set nrformats=bin,hex
+set ruler
+set runtimepath=~/vimfiles,~\\.vim\\bundle\\Vundle.vim,~\\.vim\\bundle\\vim-fugitive,~\\.vim\\bundle\\nerdtree,~\\.vim\\bundle\\vim-templates,~\\.vim\\bundle\\vim-cpp-enhanced-highlight,~\\.vim\\bundle\\command-t,~\\.vim\\bundle\\sparkup\\vim\\,~/vimfiles,~\\Vim/vimfiles,~\\Vim\\vim81,~\\Vim\\vim81\\pack\\dist\\opt\\matchit,~\\Vim/vimfiles/after,~/vimfiles/after,~/.vim/bundle/Vundle.vim/,~\\.vim\\bundle\\Vundle.vim/after,~\\.vim\\bundle\\vim-fugitive/after,~\\.vim\\bundle\\nerdtree/after,~\\.vim\\bundle\\vim-templates/after,~\\.vim\\bundle\\vim-cpp-enhanced-highlight/after,~\\.vim\\bundle\\command-t/after,~\\.vim\\bundle\\sparkup\\vim\\/after
+set scrolloff=5
+set shortmess=I
+set smartindent
+set switchbuf=usetab
+set tabstop=4
+set ttimeout
+set ttimeoutlen=100
+set undofile
+set wildmenu
+" vim: set ft=vim :

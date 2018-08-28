@@ -1,0 +1,43 @@
+/**
+ * @author      : Jens (jens.swedish@gmail.com)
+ * @file        : unsafe conversion
+ * @created     : Wednesday Jul 25, 2018 01:29:32 Coordinated Universal Time
+ */
+
+#include<iostream>
+#include<string>
+#include<vector>
+#include<algorithm>
+#include<cmath>
+using namespace std;
+
+int main() 
+{
+    double d = 0;
+    while(cin>>d){
+        int i = d;
+        char c = i;
+        int i2 = c;
+        cout << "d = " << d << endl;
+        cout << "i = " << i << endl;
+        cout << "i2 = " << i2 << endl;
+        cout << "char(" << c << ")" << endl;
+    }
+    return 0;
+}
+/*
+ * unsafe conversions are (will produce unresonable results like putting a liter of water in a 1 dl):
+ * - db -> int
+ * - db -> char
+ * - db -> bool
+ * - int -> char
+ * - int -> bool
+ * - char -> bool
+ *
+ * safe conversions are:
+ * - bool -> char
+ * - bool -> int
+ * - bool -> db
+ * - char -> int
+ * - char -> db
+ * - int -> db

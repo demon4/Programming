@@ -1,0 +1,41 @@
+/**
+ * @author      : Jens (jens.swedish@gmail.com)
+ * @file        : Properties of 2 ints
+ * @created     : Thursday Jul 26, 2018 23:22:03 Coordinated Universal Time
+ */
+
+#include<iostream>
+#include<string>
+#include<vector>
+#include<algorithm>
+#include<cmath>
+using namespace std;
+
+int main() 
+{
+    int a = 0; 
+    int b = 0; // using tenary operator ((condition) ? true-clause : false-clause) like ((a > b) ? a : b) aka short if statment
+    cout << "Enter two integers and this program will display different properties (nums are: a & b) \n > ";
+    while(cin >> a >> b){ //enter first int then seperate with a space to enter second int
+            if(a == 0 || b == 0){
+                cout << endl << " > ";
+                continue;
+            }
+            cout << endl << " a = " << a << endl;
+            cout << endl << " b = " << b << endl;
+            if(a == b){
+                cout << " (a and b) is of the equal value" << endl;
+                cout << endl << " > ";
+                continue;
+            }
+            cout << endl << " " << ((a > b) ? "a" : "b") << "(" << ((a > b) ? a : b) << ")" << " is the biggest" << endl; 
+            cout << endl << " " << ((a < b) ? "a" : "b") << "(" << ((a < b) ? a : b) << ")" << " is the smallest" << endl;
+            cout << endl << " " << "Sum of a(" << a << ")" << " + " << "b(" << b << ") " << "= " << a + b << endl;
+            cout << endl << " " << "Difference of " << ((a > b) ? "a" : "b") << "(" << ((a > b) ? a : b) << ")" << " - " << ((a < b) ? "a" : "b") << "(" << ((a < b) ? a : b) << ")" << " = " << ((a > b) ? a : b) - ((a < b) ? a : b) << endl; 
+            cout << endl << " " << "Product of a(" << a << ")" << " * " << "b(" << b << ") " << "= " << a * b << endl;
+            cout << endl << " " << "Division of " << ((a > b) ? "a" : "b") << "(" << ((a > b) ? a : b) << ")" << " / " << ((a < b) ? "a" : "b") << "(" << ((a < b) ? a : b) << ")" << " = " << (double)((a > b) ? a : b) / ((a < b) ? a : b) << endl; 
+            cout << endl << " > ";
+    }
+    return 0;
+}
+

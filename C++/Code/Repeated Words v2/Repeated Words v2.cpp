@@ -1,0 +1,29 @@
+/**
+ * @author      : Jens (jens.swedish@gmail.com)
+ * @file        : Repeated Words v2
+ * @created     : Wednesday Jul 25, 2018 01:09:49 Coordinated Universal Time
+ */
+
+#include<iostream>
+#include<string>
+#include<vector>
+#include<algorithm>
+#include<cmath>
+using namespace std;
+
+int main() 
+{
+    int numWords = 0;
+    string prev = " ";
+    string curr;
+    while (cin>>curr){
+        ++numWords;
+        if(prev==curr){
+            cout << "word number  " << numWords
+            << " repeated: " << curr << endl;
+        }
+        prev = curr; 
+    }
+    return 0;
+}
+

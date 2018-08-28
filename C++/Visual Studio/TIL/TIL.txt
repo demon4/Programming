@@ -1,0 +1,14 @@
+for(;;){} //infinite loop
+C styled strings are actually char arrays
+cout stands for character output where 'c' stands for console
+cin  is the same but character input
+to copy selected text ctrl+c or ctrl+insert
+to paste selected text ctrl+v or shift+insert
+'\n' is equal to typing 'endl'
+Visual Studio by default starts program with debugging(F5) therfore it auto shutsdown whenever program has executed but starting witout debugger(Shift+F5) it shows 'Press any key to continue' so then you can bind start without debugging to F5 instead of Shift+F5
+For loops does not have to have a init if itsd defined elsewhere
+you can not dereference a pointer unless its to a nullptr
+you need to forward declare a function written after the main function above the main function but only with the args ex ' void swapCase(cahr* name); ' else you will get a error identifier not found
+cout <<  ""; can be changed to put(cout, ""); for the same effect
+vectors have the same effect as a indefinetly expanding array 
+cout << hex,dec,oct for changing the state of the stream
