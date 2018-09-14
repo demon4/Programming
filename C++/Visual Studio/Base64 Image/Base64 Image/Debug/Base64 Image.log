@@ -1,0 +1,4 @@
+﻿  Base64 Image.cpp
+c:\users\02jli01\source\repos\programming\c++\visual studio\base64 image\base64 image\base64 image.cpp(70): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+c:\users\02jli01\source\repos\programming\c++\visual studio\base64 image\base64 image\base64 image.cpp(87): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+  Base64 Image.vcxproj -> C:\Users\02jli01\source\repos\Programming\C++\Visual Studio\Base64 Image\Debug\Base64 Image.exe

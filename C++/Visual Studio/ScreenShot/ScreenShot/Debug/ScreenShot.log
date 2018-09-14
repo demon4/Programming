@@ -1,0 +1,3 @@
+﻿  ScreenShot.cpp
+c:\users\league of legends\source\repos\programming\c++\visual studio\screenshot\screenshot\screenshot.cpp(51): warning C4838: conversion from 'int' to 'WORD' requires a narrowing conversion
+  ScreenShot.vcxproj -> C:\Users\League of Legends\source\repos\Programming\C++\Visual Studio\ScreenShot\Debug\ScreenShot.exe

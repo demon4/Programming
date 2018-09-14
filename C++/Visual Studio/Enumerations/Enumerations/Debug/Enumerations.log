@@ -1,3 +1,3 @@
 ﻿  Enumerations.cpp
-c:\users\jens\source\repos\enumerations\enumerations\enumerations.cpp(49): warning C4715: 'operator++': not all control paths return a value
-  Enumerations.vcxproj -> C:\Users\Jens\source\repos\Enumerations\Debug\Enumerations.exe
+c:\users\02jli01\source\repos\programming\c++\visual studio\enumerations\enumerations\enumerations.cpp(52): warning C4715: 'operator++': not all control paths return a value
+  Enumerations.vcxproj -> C:\Users\02jli01\source\repos\Programming\C++\Visual Studio\Enumerations\Debug\Enumerations.exe

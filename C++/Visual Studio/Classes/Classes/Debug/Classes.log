@@ -1,2 +1,4 @@
-﻿  Classes.cpp
-  Classes.vcxproj -> C:\C++\Classes\Debug\Classes.exe
+﻿  stdafx.cpp
+  Classes.cpp
+Classes.obj : error LNK2019: unresolved external symbol "void __cdecl f(class Vector &)" (?f@@YAXAAVVector@@@Z) referenced in function _main
+C:\Users\02jli01\source\repos\Programming\C++\Visual Studio\Classes\Debug\Classes.exe : fatal error LNK1120: 1 unresolved externals
