@@ -1,7 +1,7 @@
 ﻿  KeyboardHook.cpp
-c:\users\02jli01\source\repos\programming\c++\visual studio\keyboardhook\keyboardhook\keyboardhook.cpp(128): warning C4838: conversion from 'int' to 'WORD' requires a narrowing conversion
-c:\users\02jli01\source\repos\programming\c++\visual studio\keyboardhook\keyboardhook\keyboardhook.cpp(180): warning C4244: '=': conversion from 'std::streamoff' to 'long', possible loss of data
-c:\users\02jli01\source\repos\programming\c++\visual studio\keyboardhook\keyboardhook\keyboardhook.cpp(183): warning C4244: '=': conversion from 'std::streamoff' to 'long', possible loss of data
-c:\users\02jli01\source\repos\programming\c++\visual studio\keyboardhook\keyboardhook\keyboardhook.cpp(375): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
-c:\users\02jli01\source\repos\programming\c++\visual studio\keyboardhook\keyboardhook\keyboardhook.cpp(392): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
-  KeyboardHook.vcxproj -> C:\Users\02jli01\source\repos\Programming\C++\Visual Studio\KeyboardHook\Debug\KeyboardHook.exe
+c:\users\league of legends\source\repos\programming\c++\visual studio\keyboardhook\keyboardhook\keyboardhook.cpp(129): warning C4838: conversion from 'int' to 'WORD' requires a narrowing conversion
+c:\users\league of legends\source\repos\programming\c++\visual studio\keyboardhook\keyboardhook\keyboardhook.cpp(184): warning C4244: '=': conversion from 'std::streamoff' to 'long', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\keyboardhook\keyboardhook\keyboardhook.cpp(187): warning C4244: '=': conversion from 'std::streamoff' to 'long', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\keyboardhook\keyboardhook\keyboardhook.cpp(442): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\keyboardhook\keyboardhook\keyboardhook.cpp(459): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+  KeyboardHook.vcxproj -> C:\Users\League of Legends\Source\Repos\Programming\C++\Visual Studio\KeyboardHook\Debug\KeyboardHook.exe
