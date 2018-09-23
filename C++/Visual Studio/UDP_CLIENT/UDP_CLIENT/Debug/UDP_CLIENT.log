@@ -1,0 +1,8 @@
+﻿  main.cpp
+c:\users\02jli01\source\repos\udp_client\udp_client\main.cpp(144): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+c:\users\02jli01\source\repos\udp_client\udp_client\main.cpp(161): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+c:\users\02jli01\source\repos\udp_client\udp_client\sha512.hh(187): warning C4244: 'argument': conversion from 'std::streamsize' to 'size_t', possible loss of data
+  c:\users\02jli01\source\repos\udp_client\udp_client\sha512.hh(180): note: while compiling class template member function 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> sw::detail::basic_sha512<char>::calculate(std::istream &)'
+  c:\users\02jli01\source\repos\udp_client\udp_client\sha512.hh(201): note: see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> sw::detail::basic_sha512<char>::calculate(std::istream &)' being compiled
+  c:\users\02jli01\source\repos\udp_client\udp_client\main.cpp(80): note: see reference to class template instantiation 'sw::detail::basic_sha512<char>' being compiled
+  UDP_CLIENT.vcxproj -> C:\Users\02jli01\source\repos\UDP_CLIENT\Debug\UDP_CLIENT.exe

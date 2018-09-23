@@ -1,0 +1,3 @@
+﻿  Source.cpp
+c:\users\02jli01\source\repos\programming\c++\visual studio\server\server\source.cpp(28): warning C4102: 'std': unreferenced label
+  Server.vcxproj -> C:\Users\02jli01\source\repos\Programming\C++\Visual Studio\Server\Debug\Server.exe
