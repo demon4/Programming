@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\C++",
-    "\\C++\\Code"
+    "\\C++\\Visual Studio",
+    "\\C++\\Visual Studio\\UDP_CLIENT",
+    "\\C++\\Visual Studio\\UDP_CLIENT\\UDP_CLIENT",
+    "\\C++\\Visual Studio\\UDP_SERVER"
   ],
-  "SelectedNode": "\\C++\\Code\\Letter",
+  "SelectedNode": "\\C++\\Visual Studio\\UDP_SERVER\\UDP_SERVER.sln",
   "PreviewInSolutionExplorer": false
 }
