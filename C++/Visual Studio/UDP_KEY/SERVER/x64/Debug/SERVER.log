@@ -1,14 +1,1 @@
-﻿  SERVERCPY.cpp
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\servercpy.cpp(77): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\servercpy.cpp(114): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\servercpy.cpp(251): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\servercpy.cpp(262): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\servercpy.cpp(279): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\servercpy.cpp(296): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\sha512.hh(107): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\sha512.hh(103): note: while compiling class template member function 'void sw::detail::basic_sha512<char>::update(const void *,size_t)'
-  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\sha512.hh(184): note: see reference to function template instantiation 'void sw::detail::basic_sha512<char>::update(const void *,size_t)' being compiled
-  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\servercpy.cpp(131): note: see reference to class template instantiation 'sw::detail::basic_sha512<char>' being compiled
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\sha512.hh(109): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\server\sha512.hh(110): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-  SERVER.vcxproj -> C:\Users\League of Legends\source\repos\Programming\C++\Visual Studio\UDP_KEY\x64\Debug\SERVER.exe
+﻿  SERVER.vcxproj -> C:\Users\League of Legends\source\repos\Programming\C++\Visual Studio\UDP_KEY\x64\Debug\SERVER.exe

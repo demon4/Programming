@@ -1,21 +1,21 @@
 ﻿  CLIENT.cpp
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(50): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(81): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(82): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(83): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(95): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(99): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(103): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(107): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(112): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(167): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(178): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(195): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
-c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(212): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(53): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(90): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(91): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(92): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(105): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(109): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(113): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(117): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(122): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(177): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(188): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(205): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(222): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\sha512.hh(107): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
   c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\sha512.hh(103): note: while compiling class template member function 'void sw::detail::basic_sha512<char>::update(const void *,size_t)'
   c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\sha512.hh(184): note: see reference to function template instantiation 'void sw::detail::basic_sha512<char>::update(const void *,size_t)' being compiled
-  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(103): note: see reference to class template instantiation 'sw::detail::basic_sha512<char>' being compiled
+  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\client.cpp(113): note: see reference to class template instantiation 'sw::detail::basic_sha512<char>' being compiled
 c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\sha512.hh(109): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
 c:\users\league of legends\source\repos\programming\c++\visual studio\udp_key\client\sha512.hh(110): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
   CLIENT.vcxproj -> C:\Users\League of Legends\source\repos\Programming\C++\Visual Studio\UDP_KEY\x64\Debug\CLIENT.exe
