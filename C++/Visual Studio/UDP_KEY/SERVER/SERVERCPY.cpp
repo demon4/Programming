@@ -53,6 +53,7 @@ int main()
 	char typbuf[1024];
 	char filename[4096];
 	char hash[513];
+	char split_sz[1024];
 
 	while (true)
 	{
@@ -61,6 +62,7 @@ int main()
 		ZeroMemory(typbuf, 1024);
 		ZeroMemory(filename, 4096);
 		ZeroMemory(hash, 512);
+		ZeroMemory(split_sz, 1024);
 
 		int pre_typ = recvfrom(in, typbuf, 1024, 0, (sockaddr*)&client, &clientLength); // gets type of the sent data
 		string type = (string)typbuf;
@@ -101,27 +103,45 @@ int main()
 				cout << "pre_hash error: " << WSAGetLastError() << endl;
 				break;
 			}
-			int pre_bytes = recvfrom(in, sizebuf, 1024, 0, (sockaddr*)&client, &clientLength); // gets size of b64 string
+			int pre_bytes = recvfrom(in, sizebuf, 1024, 0, (sockaddr*)&client, &clientLength); // per split size
 			if (pre_bytes == SOCKET_ERROR) {
 				cout << "pre_bytes error: " << WSAGetLastError() << endl;
 				break;
 			}
 
-			vector<char> inp_buffer;
-			int size = stoi(sizebuf) + 1;
-			inp_buffer.resize(size);
-
-			int bytesInput = recvfrom(in, &inp_buffer[0], inp_buffer.size(), 0, (sockaddr*)&client, &clientLength);
-			if (bytesInput == SOCKET_ERROR) {
-				cout << "bytesInput error: " << WSAGetLastError() << endl;
+			int pre_split = recvfrom(in, split_sz, 1024, 0, (sockaddr*)&client, &clientLength); // # of  splits
+			if (pre_split == SOCKET_ERROR) {
+				cout << "pre_bytes error: " << WSAGetLastError() << endl;
 				break;
 			}
 
+			/*vector<char> inp_buffer;
+			
+			inp_buffer.resize(size);
+
+			int bytesInput = recvfrom(in, &inp_buffer[0], inp_buffer.size(), 0, (sockaddr*)&client, &clientLength);  
+			if (bytesInput == SOCKET_ERROR) {
+				cout << "bytesInput error: " << WSAGetLastError() << endl;
+				break;
+			}*/
+			int size = stoi(sizebuf) + 1;
 			char client_ip[256];
+			string type_ = typbuf;
+			string hases = hash;
 			ZeroMemory(client_ip, 256);
 			inet_ntop(AF_INET, &client.sin_addr, client_ip, 256);
 			cout << client_ip << " : [" << size - 1 << " bytes] " << "[" << type << "] ";
-			stringstream bi64;
+			cout << endl << "Type: " << typbuf
+				<< endl << "Filename: " << filename
+				<< endl << "<---------------------------- SHA512 ---------------------------->"
+				<< endl << " " << hases.substr(0, 64)
+				<< endl << " " << hases.substr(64, 128)
+				<< endl << "<---------------------------------------------------------------->"
+				<< endl << "Size: " << size
+				<< endl << "Split: " << split_sz
+				<< endl << "Total Size: " << size * stoi(split_sz)
+				<< endl;
+			/*stringstream bi64;
 			for (auto i = inp_buffer.begin(); i != inp_buffer.end(); ++i) {
 				bi64 << *i;
 			}
@@ -134,7 +154,7 @@ int main()
 			else {
 				cout << "HASH: " << (string)hash << " = FAULTY" << endl;
 			}
-			cout << endl;
+			cout << endl;*/
 		}
 
 
