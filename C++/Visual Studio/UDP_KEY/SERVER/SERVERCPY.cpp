@@ -116,7 +116,7 @@ int main()
 			}
 			
 			char client_ip[256];
-			int size = stoi(sizebuf) + 1;
+			int size = stoi(sizebuf);
 			string type_ = typbuf;
 			string hases = hash;
 			int split = stoi(split_sz);
@@ -125,13 +125,32 @@ int main()
 
 			vector<char> kys;
 			kys.resize(size*split);
-			
+			/*
 			int pre_kys = recvfrom(in, &kys[0], size+1, 0, (sockaddr*)&client, &clientLength); // # of  splits
 			if (pre_kys == SOCKET_ERROR) {
 				cout << "pre_kys error: " << WSAGetLastError() << endl;
 				break;
+			}*/
+			for (auto i = 0; i != split; ++i) {
+				if (i == 0) {
+					int sendkys = recvfrom(in, &kys[0], size, 0, (sockaddr*)&client, &clientLength);
+					if (sendkys == SOCKET_ERROR) {
+						cout << "sendsplit Error: " << WSAGetLastError() << endl;
+					}
+				}
+				else if (i == 1) {
+					int sendkys = recvfrom(in, &kys[size], size, 0, (sockaddr*)&client, &clientLength);
+					if (sendkys == SOCKET_ERROR) {
+						cout << "sendsplit Error: " << WSAGetLastError() << endl;
+					}
+				}
+				else {
+					int sendkys = recvfrom(in, &kys[size*i], size, 0, (sockaddr*)&client, &clientLength);
+					if (sendkys == SOCKET_ERROR) {
+						cout << "sendsplit Error: " << WSAGetLastError() << endl;
+					}
+				}
 			}
-
 			/*for (auto i = 0; i < split; ++i) {
 				int recvsplit = recvfrom(in, &datafile[i], datafile.size(), 0, (sockaddr*)&client, &clientLength);
 				if (pre_split == SOCKET_ERROR) {
@@ -167,7 +186,13 @@ int main()
 				<< endl << "Total Size: " << size * stoi(split_sz)
 				<< endl;
 			print_vector(kys);
+			stringstream ss;
+			for (auto i = kys.begin(); i != kys.end(); ++i) {
+				ss << *i;
+				//}
 
+			}
+			decode64(ss.str(), filename);
 			/*stringstream bi64;
 			for (auto i = inp_buffer.begin(); i != inp_buffer.end(); ++i) {
 				bi64 << *i;
