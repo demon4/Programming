@@ -131,6 +131,7 @@ int main()
 				cout << "pre_kys error: " << WSAGetLastError() << endl;
 				break;
 			}*/
+			cout << "Incoming file..." << endl;
 			for (auto i = 0; i != split; ++i) {
 				if (i == 0) {
 					int sendkys = recvfrom(in, &kys[0], size, 0, (sockaddr*)&client, &clientLength);
@@ -189,7 +190,6 @@ int main()
 			stringstream ss;
 			for (auto i = kys.begin(); i != kys.end(); ++i) {
 				ss << *i;
-				//}
 
 			}
 			decode64(ss.str(), filename);
