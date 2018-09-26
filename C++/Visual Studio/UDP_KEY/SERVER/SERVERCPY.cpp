@@ -114,6 +114,32 @@ int main()
 				cout << "pre_bytes error: " << WSAGetLastError() << endl;
 				break;
 			}
+			
+			char client_ip[256];
+			int size = stoi(sizebuf) + 1;
+			string type_ = typbuf;
+			string hases = hash;
+			int split = stoi(split_sz);
+			ZeroMemory(client_ip, 256);
+			inet_ntop(AF_INET, &client.sin_addr, client_ip, 256);
+
+			vector<char> kys;
+			kys.resize(size*split);
+			
+			int pre_kys = recvfrom(in, &kys[0], size+1, 0, (sockaddr*)&client, &clientLength); // # of  splits
+			if (pre_kys == SOCKET_ERROR) {
+				cout << "pre_kys error: " << WSAGetLastError() << endl;
+				break;
+			}
+
+			/*for (auto i = 0; i < split; ++i) {
+				int recvsplit = recvfrom(in, &datafile[i], datafile.size(), 0, (sockaddr*)&client, &clientLength);
+				if (pre_split == SOCKET_ERROR) {
+					cout << "pre_bytes error: " << WSAGetLastError() << endl;
+					break;
+				}
+				//cout << datafile[i] << endl;
+			}
 
 			/*vector<char> inp_buffer;
 			
@@ -124,12 +150,11 @@ int main()
 				cout << "bytesInput error: " << WSAGetLastError() << endl;
 				break;
 			}*/
-			int size = stoi(sizebuf) + 1;
-			char client_ip[256];
-			string type_ = typbuf;
-			string hases = hash;
-			ZeroMemory(client_ip, 256);
-			inet_ntop(AF_INET, &client.sin_addr, client_ip, 256);
+			
+			
+
+			
+			
 			cout << client_ip << " : [" << size - 1 << " bytes] " << "[" << type << "] ";
 			cout << endl << "Type: " << typbuf
 				<< endl << "Filename: " << filename
@@ -141,6 +166,8 @@ int main()
 				<< endl << "Split: " << split_sz
 				<< endl << "Total Size: " << size * stoi(split_sz)
 				<< endl;
+			print_vector(kys);
+
 			/*stringstream bi64;
 			for (auto i = inp_buffer.begin(); i != inp_buffer.end(); ++i) {
 				bi64 << *i;
@@ -220,7 +247,13 @@ int main()
 
 void print_vector(vector<char> v) {
 	for (auto i = v.begin(); i != v.end(); ++i) {
-		cout << *i;
+		if (*i == '\0') {
+			break;
+		}
+		else {
+			cout << *i;
+		}
+
 	}
 }
 
