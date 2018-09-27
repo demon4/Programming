@@ -27,7 +27,6 @@ static inline bool is_base64(unsigned char c) {
 
 int main()
 {
-
 	WSADATA data;
 	WORD version = MAKEWORD(2, 2);
 	int wsOk = WSAStartup(version, &data);
@@ -129,7 +128,7 @@ int main()
 			vector<char> kys;
 			kys.resize(size*split+1);
 
-			cout << "Incoming file: " << filename << " | Split Size: " << sizebuf << " | Number of splits: " << split_sz<< endl;
+			cout << client_ip << " : " << "[" << typbuf << "] " << "Incoming file: " << filename << " | Split Size: " << sizebuf << " | Number of splits: " << split_sz<< endl;
 			for (int i = 0; i <= split; ++i) {
 				
 				if (i == 0) {
@@ -150,7 +149,6 @@ int main()
 						cout << "sendkys3 Error: " << WSAGetLastError() << endl;
 					}
 				}
-				
 				cout << setprecision(1) << fixed << ((double)i/split)*100 << "%\b\b\b\b\b\b";
 			}
 			stringstream ss;
