@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <thread>
 #include "sha512.hh"
 #pragma comment (lib, "ws2_32.lib")
 using namespace std;
@@ -12,10 +13,11 @@ using namespace sw;
 static const string base64_chars =
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 "abcdefghijklmnopqrstuvwxyz"
-"0123456789+/";
+"0123456789+/";	
 void decode64(string b64, string output);
 void print_vector(vector<char> v);
 string encode64(string filename);
+void printi(int split);
 string base64_decode(std::string const& encoded_string);
 string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_len);
 
@@ -41,7 +43,7 @@ int main()
 	serverHint.sin_family = AF_INET;
 	serverHint.sin_port = htons(7777);
 
-	if (bind(in, (sockaddr*)&serverHint, sizeof(serverHint)) == SOCKET_ERROR)
+	if (::bind(in, (sockaddr*)&serverHint, sizeof(serverHint)) == SOCKET_ERROR)
 	{
 		cout << "Can't bind socket! " << WSAGetLastError() << endl;
 		return 66;
@@ -54,6 +56,7 @@ int main()
 	char filename[4096];
 	char hash[513];
 	char split_sz[1024];
+
 
 	while (true)
 	{
@@ -90,7 +93,7 @@ int main()
 			}
 			cout << endl;
 
-			// done getting message from user
+			// done getting message from user.
 		}
 		else if (type == "DATA") {
 			int pre_name = recvfrom(in, filename, 4096, 0, (sockaddr*)&client, &clientLength); // gets filename
@@ -124,143 +127,46 @@ int main()
 			inet_ntop(AF_INET, &client.sin_addr, client_ip, 256);
 
 			vector<char> kys;
-			kys.resize(size*split);
-			/*
-			int pre_kys = recvfrom(in, &kys[0], size+1, 0, (sockaddr*)&client, &clientLength); // # of  splits
-			if (pre_kys == SOCKET_ERROR) {
-				cout << "pre_kys error: " << WSAGetLastError() << endl;
-				break;
-			}*/
-			cout << "Incoming file..." << endl;
-			for (auto i = 0; i != split; ++i) {
+			kys.resize(size*split+1);
+
+			cout << "Incoming file: " << filename << " | Split Size: " << sizebuf << " | Number of splits: " << split_sz<< endl;
+			for (int i = 0; i <= split; ++i) {
+				
 				if (i == 0) {
 					int sendkys = recvfrom(in, &kys[0], size, 0, (sockaddr*)&client, &clientLength);
 					if (sendkys == SOCKET_ERROR) {
-						cout << "sendsplit Error: " << WSAGetLastError() << endl;
+						cout << "sendkys1 Error: " << WSAGetLastError() << endl;
 					}
 				}
 				else if (i == 1) {
 					int sendkys = recvfrom(in, &kys[size], size, 0, (sockaddr*)&client, &clientLength);
 					if (sendkys == SOCKET_ERROR) {
-						cout << "sendsplit Error: " << WSAGetLastError() << endl;
+						cout << "sendkys2 Error: " << WSAGetLastError() << endl;
 					}
 				}
-				else {
+				else if (i < split){
 					int sendkys = recvfrom(in, &kys[size*i], size, 0, (sockaddr*)&client, &clientLength);
 					if (sendkys == SOCKET_ERROR) {
-						cout << "sendsplit Error: " << WSAGetLastError() << endl;
+						cout << "sendkys3 Error: " << WSAGetLastError() << endl;
 					}
 				}
+				
+				cout << setprecision(1) << fixed << ((double)i/split)*100 << "%\b\b\b\b\b\b";
 			}
-			/*for (auto i = 0; i < split; ++i) {
-				int recvsplit = recvfrom(in, &datafile[i], datafile.size(), 0, (sockaddr*)&client, &clientLength);
-				if (pre_split == SOCKET_ERROR) {
-					cout << "pre_bytes error: " << WSAGetLastError() << endl;
-					break;
-				}
-				//cout << datafile[i] << endl;
-			}
-
-			/*vector<char> inp_buffer;
-			
-			inp_buffer.resize(size);
-
-			int bytesInput = recvfrom(in, &inp_buffer[0], inp_buffer.size(), 0, (sockaddr*)&client, &clientLength);  
-			if (bytesInput == SOCKET_ERROR) {
-				cout << "bytesInput error: " << WSAGetLastError() << endl;
-				break;
-			}*/
-			
-			
-
-			
-			
-			cout << client_ip << " : [" << size - 1 << " bytes] " << "[" << type << "] ";
-			cout << endl << "Type: " << typbuf
-				<< endl << "Filename: " << filename
-				<< endl << "<---------------------------- SHA512 ---------------------------->"
-				<< endl << " " << hases.substr(0, 64)
-				<< endl << " " << hases.substr(64, 128)
-				<< endl << "<---------------------------------------------------------------->"
-				<< endl << "Size: " << size
-				<< endl << "Split: " << split_sz
-				<< endl << "Total Size: " << size * stoi(split_sz)
-				<< endl;
-			print_vector(kys);
 			stringstream ss;
-			for (auto i = kys.begin(); i != kys.end(); ++i) {
-				ss << *i;
-
-			}
-			decode64(ss.str(), filename);
-			/*stringstream bi64;
-			for (auto i = inp_buffer.begin(); i != inp_buffer.end(); ++i) {
-				bi64 << *i;
-			}
-			string b64 = bi64.str();
-			decode64(b64, filename);
+			for (auto f = kys.begin(); f != kys.end(); ++f) { ss << *f;}
+			string base64 = ss.str();
+			decode64(base64, filename);
 			cout << "[RECEIVED FILE: \"" << filename << "\"] ";
+			string hash512 = (string)(hash);
 			if ((string)sha512::file(filename) == (string)hash) {
-				cout << "HASH: " << (string)hash << " = CORRECT" << endl;
+				cout << "HASH: " << hash512.substr(0,48) << "....(0 -> 48 of 512) = CORRECT" << endl;
 			}
 			else {
-				cout << "HASH: " << (string)hash << " = FAULTY" << endl;
+				cout << "HASH: " << hash512.substr(0,48) << "....(0 -> 48 of 512) = FAULTY" << endl;
 			}
-			cout << endl;*/
+			//done getting file from client.
 		}
-
-
-
-
-
-
-		/*
-		if ((string)typbuf == "DATA") {
-			int pre_name = recvfrom(in, filename, 4096, 0, (sockaddr*)&client, &clientLength); // gets filename
-			int pre_hash = recvfrom(in, hash, 513, 0, (sockaddr*)&client, &clientLength); // gets file hash in sha512
-			int pre_bytes = recvfrom(in, sizebuf, 1024, 0, (sockaddr*)&client, &clientLength);
-			vector<char> buf;
-			int size = stoi(sizebuf) + 2;
-			buf.resize(size);
-			int bytesInput = recvfrom(in, &buf[0], buf.size(), 0, (sockaddr*)&client, &clientLength);
-			char clientIp[256];
-			ZeroMemory(clientIp, 256);
-			inet_ntop(AF_INET, &client.sin_addr, clientIp, 256);
-			cout << clientIp << " : [" << size - 1 << " bytes] " << "[" << typbuf << "] ";
-			for (auto i = buf.begin(); i != buf.end(); ++i) {
-				cout << *i;
-			}
-		}
-		else {
-			int pre_bytes = recvfrom(in, sizebuf, 1024, 0, (sockaddr*)&client, &clientLength);
-
-
-			vector<char> buf;
-			int size = stoi(sizebuf) + 2;
-			buf.resize(size);
-			int bytesInput = recvfrom(in, &buf[0], buf.size(), 0, (sockaddr*)&client, &clientLength);
-
-			char clientIp[256];
-			ZeroMemory(clientIp, 256);
-			inet_ntop(AF_INET, &client.sin_addr, clientIp, 256);
-			string type = typbuf;
-			if (type == "TEXT")
-			{
-				char clientIp[256];
-				ZeroMemory(clientIp, 256);
-				inet_ntop(AF_INET, &client.sin_addr, clientIp, 256);
-				cout << clientIp << " : [" << size - 1 << " bytes] " << "[" << typbuf << "] ";
-				for (auto i = buf.begin(); i != buf.end(); ++i) {
-					cout << *i;
-				}
-				cout << endl;
-			}
-			else if (type == "DATA") {
-			}
-		}
-		*/
-
-
 	}
 
 
@@ -281,6 +187,7 @@ void print_vector(vector<char> v) {
 
 	}
 }
+
 
 string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_len) {
 	std::string ret;
