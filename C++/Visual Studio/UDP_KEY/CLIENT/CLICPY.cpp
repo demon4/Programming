@@ -94,10 +94,10 @@ void send_file(string filename, SOCKET out, SOCKADDR_IN server) {
 	cout << "Spliting File ";
 	string typ = "DATA";
 	string data = encode64(filename);
-	cout << "Took " << float(clock() - begin_time) / CLOCKS_PER_SEC << "s" << endl;
+	cout << "Took " << float(clock() - begin_time) / CLOCKS_PER_SEC << "s ";
 	int ssize = data.length();
 	int split = 0;
-	cout << "Base64 Size: ";
+	cout << "| Size: ";
 	int i = 1;
 	while (i <= ssize) {
 		if (ssize / i <= 60000 && ssize % i == 0)
@@ -144,6 +144,7 @@ void send_file(string filename, SOCKET out, SOCKADDR_IN server) {
 			cout << "sendsplit Error: " << WSAGetLastError() << endl;
 		}
 	}
+	cout << "Sent File." << endl;
 }
 
 string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_len) {

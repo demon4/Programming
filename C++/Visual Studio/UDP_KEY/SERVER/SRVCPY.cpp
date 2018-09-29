@@ -154,16 +154,17 @@ int main()
 				cout << setprecision(1) << fixed << ((double)i / split) * 100 << "%\b\b\b\b\b\b";
 			}
 			stringstream ss;
+			cout << "Reconstructing File..." << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
 			for (auto f = kys.begin(); f != kys.end(); ++f) { ss << *f; }
 			string base64 = ss.str();
 			decode64(base64, filename);
 			cout << "[RECEIVED FILE: \"" << filename << "\" in (" << float(clock() - begin_time) / CLOCKS_PER_SEC << "s)] ";
 			string hash512 = (string)(hash);
 			if ((string)sha512::file(filename) == (string)hash) {
-				cout << "HASH: " << hash512.substr(0, 16) << "....(16 of 512) = CORRECT" << endl;
+				cout << "HASH: " << hash512.substr(0, 48) << "....(48 of 512) = CORRECT" << endl;
 			}
 			else {
-				cout << "HASH: " << hash512.substr(0, 16) << "....(16 of 512) = FAULTY" << endl;
+				cout << "HASH: " << hash512.substr(0, 48) << "....(48 of 512) = FAULTY" << endl;
 			}
 			//done getting file from client.
 		}
