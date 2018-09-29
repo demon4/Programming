@@ -1,0 +1,12 @@
+﻿  pch.cpp
+  CLICPY.cpp
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\client\clicpy.cpp(221): warning C4244: '=': conversion from 'std::streamoff' to 'long', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\client\clicpy.cpp(224): warning C4244: '=': conversion from 'std::streamoff' to 'long', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\client\clicpy.cpp(476): warning C4838: conversion from 'int' to 'WORD' requires a narrowing conversion
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\client\sha512.hh(107): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\client\sha512.hh(103): note: while compiling class template member function 'void sw::detail::basic_sha512<char>::update(const void *,size_t)'
+  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\client\sha512.hh(184): note: see reference to function template instantiation 'void sw::detail::basic_sha512<char>::update(const void *,size_t)' being compiled
+  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\client\clicpy.cpp(176): note: see reference to class template instantiation 'sw::detail::basic_sha512<char>' being compiled
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\client\sha512.hh(109): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\client\sha512.hh(110): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  CLIENT.vcxproj -> C:\Users\League of Legends\source\repos\Programming\C++\Visual Studio\UDP_KEYLOGGER\x64\Debug\CLIENT.exe

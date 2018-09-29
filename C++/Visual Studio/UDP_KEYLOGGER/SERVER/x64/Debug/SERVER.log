@@ -1,0 +1,14 @@
+﻿  pch.cpp
+  SRVCPY.cpp
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\srvcpy.cpp(82): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\srvcpy.cpp(237): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\srvcpy.cpp(248): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\srvcpy.cpp(265): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\srvcpy.cpp(282): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\sha512.hh(107): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\sha512.hh(103): note: while compiling class template member function 'void sw::detail::basic_sha512<char>::update(const void *,size_t)'
+  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\sha512.hh(184): note: see reference to function template instantiation 'void sw::detail::basic_sha512<char>::update(const void *,size_t)' being compiled
+  c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\srvcpy.cpp(163): note: see reference to class template instantiation 'sw::detail::basic_sha512<char>' being compiled
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\sha512.hh(109): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\league of legends\source\repos\programming\c++\visual studio\udp_keylogger\server\sha512.hh(110): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  SERVER.vcxproj -> C:\Users\League of Legends\source\repos\Programming\C++\Visual Studio\UDP_KEYLOGGER\x64\Debug\SERVER.exe
