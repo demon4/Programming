@@ -8,13 +8,11 @@
 #include <vector>
 #include <thread>
 #include "sha512.hh"
+#include <minwinbase.h>
 #pragma comment (lib, "ws2_32.lib")
 using namespace std;
 using namespace sw;
-static const string base64_chars =
-"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-"abcdefghijklmnopqrstuvwxyz"
-"0123456789+/";
+static const string base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "abcdefghijklmnopqrstuvwxyz" "0123456789+/";
 void decode64(string b64, string output);
 void print_vector(vector<char> v);
 string encode64(string filename);
@@ -27,6 +25,8 @@ static inline bool is_base64(unsigned char c) {
 
 int main()
 {
+	locale swedish("swedish");
+	locale::global(swedish);
 	WSADATA data;
 	WORD version = MAKEWORD(2, 2);
 	int wsOk = WSAStartup(version, &data);
@@ -40,7 +40,7 @@ int main()
 	sockaddr_in serverHint;
 	serverHint.sin_addr.S_un.S_addr = ADDR_ANY;
 	serverHint.sin_family = AF_INET;
-	int port = 7777;
+	int port = 1337;
 	serverHint.sin_port = htons(port);
 
 	if (::bind(in, (sockaddr*)&serverHint, sizeof(serverHint)) == SOCKET_ERROR)
@@ -56,6 +56,8 @@ int main()
 	char filename[4096];
 	char hash[513];
 	char split_sz[1024];
+	char fclientip[256];
+	ZeroMemory(fclientip, 256);
 	cout << "Server now listening on port: " << port << endl;
 
 	while (true)
@@ -72,7 +74,7 @@ int main()
 
 		if (type == "TEXT") {
 			int pre_bytes = recvfrom(in, sizebuf, 1024, 0, (sockaddr*)&client, &clientLength); // gets string size
-			if (pre_bytes == SOCKET_ERROR) { // checks if size of string was successful 
+			if (pre_bytes == SOCKET_ERROR) { // checks if size of string was successful
 				cout << "pre_bytes error: " << WSAGetLastError() << endl;
 				break;
 			}
@@ -85,13 +87,25 @@ int main()
 				break;
 			}
 			char clientIp[256];
+
 			ZeroMemory(clientIp, 256);
 			inet_ntop(AF_INET, &client.sin_addr, clientIp, 256);
-			cout << clientIp << " : [" << size - 1 << " bytes] " << "[" << typbuf << "] "; //prints ip, type and message 
-			for (auto i = buf.begin(); i != buf.end(); ++i) {
-				cout << *i;
+			if (equal(begin(clientIp), end(clientIp), begin(fclientip)))
+			{
+				for (auto i = buf.begin(); i != buf.end(); ++i) {
+					cout << *i;
+				}
+				cout << "\b";
 			}
-			cout << endl;
+			else
+			{
+				cout << clientIp << " : [" << size - 1 << " bytes] " << "[" << typbuf << "]" << endl; //prints ip, type and message
+				for (auto i = buf.begin(); i != buf.end(); ++i) {
+					cout << *i;
+				}
+				cout << "\b";
+				copy(begin(clientIp), end(clientIp), begin(fclientip));
+			}
 
 			// done getting message from user.
 		}
@@ -132,7 +146,6 @@ int main()
 
 			cout << client_ip << " : " << "[" << typbuf << "] " << "Incoming file: " << filename << " | Split Size: " << sizebuf << " | Number of splits: " << split_sz << endl;
 			for (int i = 0; i <= split; ++i) {
-
 				if (i == 0) {
 					int sendkys = recvfrom(in, &kys[0], size, 0, (sockaddr*)&client, &clientLength);
 					if (sendkys == SOCKET_ERROR) {
@@ -170,9 +183,7 @@ int main()
 		}
 	}
 
-
 	closesocket(in);
-
 
 	WSACleanup();
 }
@@ -185,10 +196,8 @@ void print_vector(vector<char> v) {
 		else {
 			cout << *i;
 		}
-
 	}
 }
-
 
 string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_len) {
 	std::string ret;
@@ -226,11 +235,9 @@ string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_len) 
 
 		while ((i++ < 3))
 			ret += '=';
-
 	}
 
 	return ret;
-
 }
 
 string base64_decode(std::string const& encoded_string) {
